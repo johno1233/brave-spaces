@@ -1,0 +1,16 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Build artifacts (if any in future)
+dist/
+build/
+
+# No node_modules since this is plain JS no bundler
+node_modules/

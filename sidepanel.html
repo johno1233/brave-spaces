@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brave Spaces</title>
+  <link rel="stylesheet" href="sidepanel.css">
+</head>
+<body>
+  <div id="root" class="layout">
+    <!-- LEFT: Workspaces + Panel rail -->
+    <div class="sidebar">
+      <!-- Workspaces -->
+      <div class="section">
+        <div class="section-header">
+          <span>Workspaces</span>
+          <button id="add-workspace" title="Create new workspace">+</button>
+        </div>
+        <div id="workspaces" class="workspace-list"></div>
+      </div>
+
+      <!-- Panel icon rail -->
+      <div class="section panels-rail">
+        <div class="section-header">
+          <span>Panels</span>
+          <button id="add-panel" title="Add current page to panel">+</button>
+        </div>
+        <div id="panel-rail" class="rail-icons"></div>
+      </div>
+    </div>
+
+    <!-- REST: Toolbar + iframe / error -->
+    <div class="main">
+      <div id="toolbar" class="toolbar">
+        <button id="back-btn" title="Back">←</button>
+        <button id="ua-toggle" title="Toggle Mobile/Desktop">💻</button>
+        <button id="popout-btn" title="Open in slim popup">↗︎</button>
+        <button id="add-current-btn" title="Add current page">+ Current</button>
+        <span id="panel-title" class="panel-title"></span>
+      </div>
+
+      <div id="content-area" class="content-area">
+        <iframe id="guest" class="guest-frame" src="about:blank" sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-modals"></iframe>
+        <div id="panel-error" class="panel-error" style="display: none;">
+          <p>This page cannot be embedded (X-Frame-Options or CSP blocked it).</p>
+          <button id="error-popout-btn">Open slim popup</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="lib/store.js"></script>
+  <script src="lib/workspaces.js"></script>
+  <script src="lib/panels.js"></script>
+  <script src="sidepanel.js"></script>
+</body>
+</html>
