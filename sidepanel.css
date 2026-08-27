@@ -1,0 +1,296 @@
+:root {
+  --bg: #1a1a1a;
+  --fg: #e0e0e0;
+  --accent: #4a9eff;
+  --border: #333;
+  --item-hover: #252525;
+  --active-bg: #1f2f4a;
+  --active-border: #3a6ea5;
+  --menu-bg: #2a2a2a;
+  --menu-hover: #3a3a3a;
+  --sidebar-width: 210px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  font-size: 13px;
+  line-height: 1.35;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.layout {
+  display: flex;
+  height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+  width: var(--sidebar-width);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #161616;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid var(--border);
+}
+
+.section:last-child {
+  border-bottom: none;
+  flex: 1;
+  min-height: 0;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 8px;
+  font-size: 11px;
+  font-weight: 500;
+  color: #aaa;
+  background: #1f1f1f;
+  flex-shrink: 0;
+}
+
+.section-header button {
+  background: #2a2a2a;
+  color: #ccc;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  width: 18px;
+  height: 18px;
+  font-size: 13px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.section-header button:hover {
+  background: #3a3a3a;
+  color: #fff;
+}
+
+/* Workspace list (compact from previous) */
+.workspace-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 4px;
+  overflow-y: auto;
+  flex-shrink: 0;
+}
+
+.workspace-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 6px;
+  background: #222;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.workspace-item:hover {
+  background: var(--item-hover);
+}
+
+.workspace-item.active {
+  background: var(--active-bg);
+  border-color: var(--active-border);
+}
+
+.emoji {
+  font-size: 14px;
+  width: 18px;
+  text-align: center;
+}
+
+.name {
+  flex: 1;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.count {
+  font-size: 10px;
+  color: #888;
+}
+
+/* Panel rail */
+.panels-rail {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.rail-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 6px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.rail-icon {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #222;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  overflow: hidden;
+}
+
+.rail-icon:hover {
+  background: var(--item-hover);
+}
+
+.rail-icon.active {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+
+.rail-icon img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+/* Main content */
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 8px;
+  background: #1f1f1f;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.toolbar button {
+  background: #2a2a2a;
+  color: #ddd;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 2px 6px;
+  font-size: 12px;
+  cursor: pointer;
+  min-width: 22px;
+}
+
+.toolbar button:hover {
+  background: #3a3a3a;
+}
+
+.panel-title {
+  margin-left: auto;
+  font-size: 11px;
+  color: #888;
+  max-width: 140px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.content-area {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  background: #fff;
+}
+
+.guest-frame {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: #fff;
+  display: block;
+}
+
+.panel-error {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #f8f8f8;
+  color: #333;
+  padding: 20px;
+  text-align: center;
+  font-size: 13px;
+  z-index: 10;
+}
+
+.panel-error p {
+  margin-bottom: 12px;
+  max-width: 280px;
+}
+
+.panel-error button {
+  background: #4a9eff;
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.panel-error button:hover {
+  background: #3a8aef;
+}
+
+.ws-menu-popup {
+  background: var(--menu-bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  min-width: 110px;
+  overflow: hidden;
+  font-size: 12px;
+  z-index: 10000;
+}
+
+.ws-menu-item {
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.ws-menu-item:hover {
+  background: var(--menu-hover);
+}

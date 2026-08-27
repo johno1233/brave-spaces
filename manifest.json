@@ -1,0 +1,50 @@
+{
+  "manifest_version": 3,
+  "name": "Brave Spaces",
+  "version": "1.0.0",
+  "description": "Workspaces and web panels inside Brave (approximates Vivaldi features)",
+  "permissions": [
+    "tabs",
+    "tabGroups",
+    "windows",
+    "storage",
+    "sidePanel",
+    "contextMenus",
+    "declarativeNetRequest",
+    "sessions",
+    "commands"
+  ],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
+  "action": {
+    "default_title": "Brave Spaces"
+  },
+  "commands": {
+    "next-workspace": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Right",
+        "mac": "Command+Shift+Right"
+      },
+      "description": "Switch to next workspace"
+    },
+    "prev-workspace": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Left",
+        "mac": "Command+Shift+Left"
+      },
+      "description": "Switch to previous workspace"
+    },
+    "toggle-panel": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+E",
+        "mac": "Command+Shift+E"
+      },
+      "description": "Toggle side panel"
+    }
+  }
+}
